@@ -1,31 +1,20 @@
 with open("./input.txt") as file:
     data = file.read().splitlines()
 
-
-class Fish:
-    def __init__(self, timer):
-        self.timer = timer
-
-    def update(self):
-        if self.timer > 0:
-            self.timer -= 1
-            return
-        self.timer = 6
-        return Fish(8)
-
-    def __repr__(self) -> str:
-        return str(self.timer)
+import functools
 
 
-allFishes = []
+@functools.lru_cache(None)
+def fishes_spawned(num_days):
+    s = 1
+    for i in range(9, num_days + 9, 7):
+        s += fishes_spawned(num_days - i)
+    return s
+
+
+days = 80
+
+s = 0
 for timer in data[0].split(","):
-    allFishes.append(Fish(int(timer)))
-
-for day in range(80):
-    temp = []
-    for fish in allFishes:
-        t = fish.update()
-        if t:
-            temp.append(t)
-    allFishes += temp
-print(len(allFishes))
+    s += fishes_spawned(days - int(timer))
+print(s)
