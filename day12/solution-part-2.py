@@ -30,4 +30,4 @@ def walk(vertices, counts: defaultdict[str, int], vertex: str, ok: bool):
     return s
 
 
-print(walk(vertices, defaultdict(lambda:0), "start", True))
+print(walk(vertices, defaultdict(lambda: 0), "start", True))
