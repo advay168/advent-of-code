@@ -44,20 +44,5 @@ def status_of(commands, x_min_, x_max_, y_min_, y_max_, z_min_, z_max_):
     return count
 
 
-def get_counts(commands):
-    count = 0
-    for i, (
-        ((x_min, x_max, y_min, y_max, z_min, z_max), val),
-        (bounds, _),
-    ) in enumerate(zip(commands, commands)):
-        c = status_of(commands[:i], *bounds)
-        x_diff = x_max - x_min + 1
-        y_diff = y_max - y_min + 1
-        z_diff = z_max - z_min + 1
-        count -= c
-        if val:
-            count += x_diff * y_diff * z_diff
-    return count
-
-
-print(get_counts(tuple(commands)))
+inf = float("inf")
+print(status_of(tuple(commands), -inf, inf, -inf, inf, -inf, inf))
