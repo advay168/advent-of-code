@@ -89,10 +89,10 @@ alu = ALU()
 for line in data:
     alu.dispatch(line)
 constraints = alu.constraints
-a=b=c=d=e=f=g=h=i=j=k=l=m=n=1
+a = b = c = d = e = f = g = h = i = j = k = l = m = n = 1
 for variable in "abcdefghijklmn":
-    for i in range(1,10):
-        locals()[variable] = i
+    for x in range(1, 10):
+        locals()[variable] = x
         for expr in constraints:
             if variable in expr:
                 exec(expr)
@@ -102,7 +102,6 @@ for variable in "abcdefghijklmn":
                 invalid = True
         if not invalid:
             break
-
-for expr in constraints:exec(expr)
-print(a,b,c,d,e,f,g,h,i,j,k,l,m,n,sep="")
-
+for expr in constraints:
+    exec(expr)
+print(a, b, c, d, e, f, g, h, i, j, k, l, m, n, sep="")
