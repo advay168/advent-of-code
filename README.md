@@ -1,5 +1,5 @@
-# advent-of-code-2021
-Self written solutions to advent of code 2021 in python and haskell  
+# advent-of-code
+Self written solutions to advent of code in python and haskell for years 2021 and 2022
 Link: 
 https://adventofcode.com/
 
